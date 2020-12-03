@@ -9,16 +9,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
 
-/**
- * FXML Controller class
- *
- * @author Larkin Gustavson, Archit Shah, and Damiano Di Cocco
- * @version 1.0
- * 
- */
 public class Final_ProjectController implements Initializable {
+    
+    double orgSceneX, orgSceneY;
+    double orgTranslateX, orgTranslateY;
+    double newTranslateX, newTranslateY;
+    double tempTranslateX, tempTranslateY;
+    double finalTranslateX, finalTranslateY;
+    double offsetX, offsetY;
 
     @FXML
     private ImageView grassBackgroundImage; // used for the grass in the background
@@ -28,6 +31,14 @@ public class Final_ProjectController implements Initializable {
     private ImageView greyRectangleBackground; // used for the grey rectangle in the background to either play the actions that the chose or to stop
     @FXML
     private ImageView goldenRectangleBackground; // used for the rectangle to display possible directions that the character can move 
+    @FXML
+    private Rectangle position1;
+    @FXML
+    private Rectangle position11;
+    @FXML
+    private Button startButton;
+    @FXML
+    private Rectangle blueBlock;
 
     /**
      * Initializes the controller class.
@@ -37,5 +48,39 @@ public class Final_ProjectController implements Initializable {
      
        
     }    
+
+    @FXML
+    private void arrowDrag(MouseEvent event) {
+        offsetX = event.getSceneX() - orgSceneX;
+        offsetY = event.getSceneY() - orgSceneY;
+        newTranslateX = orgTranslateX + offsetX;
+        newTranslateY = orgTranslateY + offsetY;
+        ((Rectangle)(event.getSource())).setTranslateX(newTranslateX);
+        ((Rectangle)(event.getSource())).setTranslateY(newTranslateY);
+        
+        
+        
+        
+        
+        
+    }
+
+    @FXML
+    private void arrowPress(MouseEvent event) {
+        
+        orgSceneX = event.getSceneX();
+        orgSceneY = event.getSceneY();
+        orgTranslateX = ((Rectangle)(event.getSource())).getTranslateX();
+        orgTranslateY = ((Rectangle)(event.getSource())).getTranslateY();
+        
+    }
+
+    @FXML
+    private void arrowRelease(MouseEvent event) {
+
+       
+       
+    }
     
+
 }
