@@ -10,9 +10,6 @@ import java.util.ResourceBundle;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.PauseTransition;
-import javafx.animation.RotateTransition;
-import javafx.animation.SequentialTransition;
-import javafx.animation.TranslateTransition;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,27 +54,18 @@ public class Final_ProjectController implements Initializable {
     private double offsetY;
     
     private Path path;
-        
-        private MoveTo moveTo;
-
-        private LineTo line1 ;
-        
-        private LineTo line2 ;
-        
-        private LineTo line3 ;
-        
-        private LineTo line4;
-        
-
-     
-        public PathTransition pathTransition = new PathTransition();
-        
-      
-        
-        private int loop = 0;
-        
-        
-        
+    
+    private MoveTo moveTo; 
+    
+    private LineTo line1; 
+    private LineTo line2;
+    private LineTo line3;
+    private LineTo line4;
+    
+    private PathTransition pathTransition;
+    private Duration stopTime;
+    
+    private int loop = 0;
       
     
     
@@ -155,11 +143,6 @@ public class Final_ProjectController implements Initializable {
         ((Rectangle)(event.getSource())).setTranslateX(newTranslateX);
         ((Rectangle)(event.getSource())).setTranslateY(newTranslateY);
         
-        
-        
-        
-        
-        
     }
 
     @FXML
@@ -176,7 +159,7 @@ public class Final_ProjectController implements Initializable {
     @FXML
     private void arrowRelease(MouseEvent event) {
 
-       
+        
        
     }
 
@@ -233,59 +216,46 @@ public class Final_ProjectController implements Initializable {
     }
     @FXML
     private void movePlayer(MouseEvent event) {
-        
-     if (loop == 0)
-     {
-         path = new Path();
-        
-          moveTo = new MoveTo(0,0); 
+  
+        if(loop == 0) {
+         
+            path = new Path();
+                
+            moveTo = new MoveTo(0, 0); 
+          
+            line1 = new LineTo(0, 300);
+          
+            line2 = new LineTo(414, 300);
+          
+            line3 = new LineTo(410, 0);
+          
+            line4 = new LineTo(832, 0);
+          
+            path.getElements().add(moveTo);
+          
+            path.getElements().addAll(line1, line2, line3, line4);
+          
+            pathTransition = new PathTransition();
+          
+            pathTransition.setDuration(Duration.millis(10000));
+          
+            pathTransition.setNode(player);
+          
+            pathTransition.setPath(path);
+          
+            loop = 1;
+          
+            pathTransition.play();
 
-       line1 = new LineTo(0,300); 
-        
-        line2 = new LineTo(400,300);
-        
-       line3 = new LineTo(400,0);
-        
-        line4= new LineTo (825,0);
-
-
-        path.getElements().add(moveTo);
-        path.getElements().addAll(line1,line2,line3,line4);
-        
-       pathTransition = new PathTransition();
-        
-        pathTransition.setDuration(Duration.millis(10000));
-        
-        pathTransition.setNode(player);
-        
-        pathTransition.setPath(path);
-        
-        loop = 1;
-        
+     } else { 
         pathTransition.play();
      }
-     
-     else
-     { 
-        pathTransition.play();
-     }
-        
-        
-        
-        
-        
-    
-        
-        
-       
-        
-       
-        
+
     }
 
     @FXML
     private void rightClickRectangle3(MouseEvent event) {
-     System.out.println("Rectangle 3 clicked");
+        System.out.println("Rectangle 3 clicked");
         
         ContextMenu contextMenu3 = new ContextMenu(); // adding the context menu
         
@@ -343,10 +313,8 @@ public class Final_ProjectController implements Initializable {
         
         pathTransition.pause();
         
-
-    
-        
-           
+        stopTime = pathTransition.getDuration();
+         
         
     }
     
