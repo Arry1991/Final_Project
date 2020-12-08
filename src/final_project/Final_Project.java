@@ -8,6 +8,7 @@ package final_project;
 import java.util.HashSet;
 import java.util.Set;
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
