@@ -46,7 +46,7 @@ import javafx.util.Duration;
  * @see Final_Project.java
  *
  */
-public class Final_ProjectController implements Initializable {
+public class Final_Project_Level2Controller implements Initializable {
 
     // for "locking" the rectangle into position
     // when the rectangle gets to a desired position, change the background color to blue
@@ -338,7 +338,7 @@ public class Final_ProjectController implements Initializable {
         System.out.println("Rectangle 3 is " + Rectangle3); // showing what initial value that was stored in the third rectangle
         System.out.println("Rectangle 4 is " + Rectangle4); // showing what initial value that was stored in the fourth rectangle
 
-        if (Rectangle1 == "Down" && Rectangle2 == "Right" && Rectangle3 == "Up" && Rectangle4 == "Right") { // if the user enterred the correct path for this level
+        if (Rectangle1 == "Right" && Rectangle2 == "Down" && Rectangle3 == "Right" && Rectangle4 == "Up") { // if the user enterred the correct path for this level
             Rectangle rectangle = new Rectangle(); // creating a new rectangle to store the background image of the picture of a corrct check mark
             rectangle.setX(800); // setting the rectangle's x postion to be 800
             rectangle.setY(15); // setting the rectangle's y postion to be 15
@@ -366,13 +366,13 @@ public class Final_ProjectController implements Initializable {
 
                 moveTo = new MoveTo(0, 0); // move to position (0, 0), where the circle (player) is 
 
-                line1 = new LineTo(0, 300); // move from start to point line1
+                line1 = new LineTo(400, 0); // move from start to point line1
 
-                line2 = new LineTo(414, 300); // move from start to point line2
+                line2 = new LineTo(400, 300); // move from start to point line2
 
-                line3 = new LineTo(410, 0); // move from start to point line3
+                line3 = new LineTo(700, 300); // move from start to point line3
 
-                line4 = new LineTo(832, 0); // move from start to point line4
+                line4 = new LineTo(700, 0); // move from start to point line4
 
                 path.getElements().addAll(moveTo, line1, line2, line3, line4); // adding all of the elements of the path
 
@@ -406,7 +406,7 @@ public class Final_ProjectController implements Initializable {
             nxLvl.setGraphic(view); // sets the image that will be pasted onto the button
             nxLvl.setOnAction((ActionEvent e) -> { try { // button action for next level
                
-                Parent tableViewParent = FXMLLoader.load(getClass().getResource("Final_Project_Level2.fxml")); // load up the next FXML file
+                Parent tableViewParent = FXMLLoader.load(getClass().getResource("Final_Project_Level3.fxml")); // load up the next FXML file
                 Scene tableViewScene = new Scene(tableViewParent); // sets the fxml as the scene
                 Stage window = (Stage)((Node)event.getSource()).getScene().getWindow(); // makes the window the stage, and the scene
                 window.setScene(tableViewScene); // sets the scene to be the new fxml
