@@ -394,7 +394,7 @@ public class Final_Project_Level3Controller implements Initializable {
                 isPaused = false; // the game is no longer paused
                 
                 
-            Image img = new Image("final_project/wonButton.jpg"); // pastes the custom image onto the button
+            Image img = new Image("final_project/quitButton.jpg"); // pastes the custom image onto the button
             ImageView view = new ImageView(img);  // allows the image to be pasted onto the button
             view.setFitHeight(300); // sets the height for the image on button
             view.setPreserveRatio(true); // makes sure the image is the correct resolution / measurements
