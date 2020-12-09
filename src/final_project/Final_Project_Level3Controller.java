@@ -394,7 +394,7 @@ public class Final_Project_Level3Controller implements Initializable {
                 isPaused = false; // the game is no longer paused
                 
                 
-            Image img = new Image("final_project/winnerButton.jpg"); // pastes the custom image onto the button
+            Image img = new Image("final_project/wonButton.jpg"); // pastes the custom image onto the button
             ImageView view = new ImageView(img);  // allows the image to be pasted onto the button
             view.setFitHeight(300); // sets the height for the image on button
             view.setPreserveRatio(true); // makes sure the image is the correct resolution / measurements
@@ -404,15 +404,9 @@ public class Final_Project_Level3Controller implements Initializable {
             nxLvl.setMinWidth(100); // width of the button
             nxLvl.setMinHeight(100); // height of the button
             nxLvl.setGraphic(view); // sets the image that will be pasted onto the button
-            nxLvl.setOnAction((ActionEvent e) -> { try { // button action for next level
-               
-                Parent tableViewParent = FXMLLoader.load(getClass().getResource("Final_Project_Level3.fxml")); // load up the next FXML file
-                Scene tableViewScene = new Scene(tableViewParent); // sets the fxml as the scene
-                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow(); // makes the window the stage, and the scene
-                window.setScene(tableViewScene); // sets the scene to be the new fxml
-                window.show(); // shows the next fxml file in the window
-                    } catch (IOException ex) { // needed in order to implement this solution
-                        Logger.getLogger(Final_ProjectController.class.getName()).log(Level.SEVERE, null, ex);
+            nxLvl.setOnAction((ActionEvent e) -> { { 
+                System.exit(0);
+                    
                     }
         });
             anchorPane.getChildren().add(nxLvl); // add the button to the anchorPane that will display when the arrows are correct
