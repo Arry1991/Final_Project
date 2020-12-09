@@ -23,19 +23,19 @@
                 <Image url="@final_project_wood_background.JPEG" />
             </image>
         </ImageView>
-        <ImageView fx:id="greyRectangleBackground" fitHeight="208.0" fitWidth="132.0" layoutX="1098.0">
+        <ImageView fx:id="greyRectangleBackground" fitHeight="208.0" fitWidth="132.0" layoutX="1039.0">
             <image>
                 <Image url="@final_project_grey_rectangle_background.JPEG" />
             </image>
         </ImageView>
-        <ImageView fx:id="goldenRectangleBackground" fitHeight="208.0" fitWidth="592.0" layoutX="1229.0" layoutY="-1.0">
+        <ImageView fx:id="goldenRectangleBackground" fitHeight="208.0" fitWidth="661.0" layoutX="1160.0" layoutY="-1.0">
             <image>
                 <Image url="@final_project_golden_rectangle_background.JPEG" />
             </image>
         </ImageView>
         <Rectangle fx:id="position1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="120.0" layoutX="20.0" layoutY="39.0" onMouseClicked="#rightClickRectangle1" stroke="#eeff00" strokeType="INSIDE" strokeWidth="5.0" width="120.0" />
         <Rectangle fx:id="position2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="120.0" layoutX="172.0" layoutY="39.0" onMouseClicked="#rightClickRectangle2" stroke="#eeff00" strokeType="INSIDE" strokeWidth="5.0" width="120.0" />
-        <Button fx:id="startButton" layoutX="1105.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#movePlayer" prefHeight="60.0" prefWidth="114.0" text="START">
+        <Button fx:id="startButton" layoutX="1041.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#movePlayer" prefHeight="60.0" prefWidth="114.0" text="START">
             <font>
                 <Font name="System Bold" size="25.0" />
             </font>
@@ -65,22 +65,22 @@
                 </LinearGradient>
             </fill>
         </Circle>
-        <Button fx:id="pauseButton" layoutX="1107.0" layoutY="116.0" mnemonicParsing="false" onMouseClicked="#pausePlayer" prefHeight="60.0" prefWidth="114.0" text="PAUSE">
+        <Button fx:id="pauseButton" layoutX="1041.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#pausePlayer" prefHeight="60.0" prefWidth="114.0" text="PAUSE">
             <font>
                 <Font name="System Bold" size="25.0" />
             </font>
         </Button>
-      <Label layoutX="1262.0" layoutY="19.0" prefHeight="68.0" prefWidth="547.0" text="Right Click the top boxes">
+      <Label layoutX="1195.0" layoutY="19.0" prefHeight="68.0" prefWidth="614.0" text="Right Click the top boxes Twice">
          <font>
             <Font name="Copperplate Gothic Bold" size="34.0" />
          </font>
       </Label>
-      <Label layoutX="1262.0" layoutY="69.0" prefHeight="68.0" prefWidth="547.0" text="Choose a path to take">
+      <Label layoutX="1195.0" layoutY="70.0" prefHeight="68.0" prefWidth="547.0" text="Choose a path to take">
          <font>
             <Font name="Copperplate Gothic Bold" size="34.0" />
          </font>
       </Label>
-      <Label layoutX="1262.0" layoutY="122.0" prefHeight="68.0" prefWidth="547.0" text="Get to the red end box">
+      <Label layoutX="1195.0" layoutY="125.0" prefHeight="68.0" prefWidth="547.0" text="Get to the red end box">
          <font>
             <Font name="Copperplate Gothic Bold" size="34.0" />
          </font>
