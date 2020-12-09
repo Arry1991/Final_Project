@@ -55,7 +55,7 @@ public class Final_Project extends Application {
 
         stage.sizeToScene(); // setting the size of the stage to be the scene 
 
-        stage.setTitle("Kodable"); // set the title of the window to be Kodable
+        stage.setTitle("Kodable Level 1"); // set the title of the window to be Kodable
 
         stage.show(); // show what is on the stage
 

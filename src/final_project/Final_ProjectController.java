@@ -1,6 +1,3 @@
-
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -51,15 +48,6 @@ import javafx.util.Duration;
  */
 public class Final_ProjectController implements Initializable {
 
-    // for "locking" the rectangle into position
-    // when the rectangle gets to a desired position, change the background color to blue
-    // or in the empty placeholder, hover or select (highlight and put focus) and then move to the source subwindow and select the direction 
-    // 
-    // for using multiple animations
-    // use animation set, to determine the order for animation
-    // 
-    // use some if statements to verify the correct position before it gets moved?
-    // keep the correct path simple, ~4 units to get to the end 
     @FXML
     private ImageView grassBackgroundImage; // used for the grass in the background
     @FXML
@@ -192,6 +180,7 @@ public class Final_ProjectController implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -210,6 +199,7 @@ public class Final_ProjectController implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -259,6 +249,7 @@ public class Final_ProjectController implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -277,6 +268,7 @@ public class Final_ProjectController implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -295,6 +287,7 @@ public class Final_ProjectController implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -312,6 +305,7 @@ public class Final_ProjectController implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -341,7 +335,7 @@ public class Final_ProjectController implements Initializable {
         System.out.println("Rectangle 3 is " + Rectangle3); // showing what initial value that was stored in the third rectangle
         System.out.println("Rectangle 4 is " + Rectangle4); // showing what initial value that was stored in the fourth rectangle
 
-        if (Rectangle1 == "Down" && Rectangle2 == "Right" && Rectangle3 == "Up" && Rectangle4 == "Right") { // if the user enterred the correct path for this level
+        if (Rectangle1.equals("Down") && Rectangle2.equals("Right") && Rectangle3.equals("Up") && Rectangle4.equals("Right")) { // if the user enterred the correct path for this level
             Rectangle rectangle = new Rectangle(); // creating a new rectangle to store the background image of the picture of a corrct check mark
             rectangle.setX(800); // setting the rectangle's x postion to be 800
             rectangle.setY(15); // setting the rectangle's y postion to be 15
@@ -395,32 +389,36 @@ public class Final_ProjectController implements Initializable {
                 rotateTransition.play(); // play the rotate transition animation to the screen 
 
                 isPaused = false; // the game is no longer paused
-                
-                
-            Image img = new Image("final_project/winnerButton.jpg"); // pastes the custom image onto the button
-            ImageView view = new ImageView(img);  // allows the image to be pasted onto the button
-            view.setFitHeight(300); // sets the height for the image on button
-            view.setPreserveRatio(true); // makes sure the image is the correct resolution / measurements
-            Button nxLvl = new Button(); // create a button that allows the player to move onto the next level
-            nxLvl.setLayoutX(1320); // position x for button
-            nxLvl.setLayoutY(300); // position y for button
-            nxLvl.setMinWidth(100); // width of the button
-            nxLvl.setMinHeight(100); // height of the button
-            nxLvl.setGraphic(view); // sets the image that will be pasted onto the button
-            nxLvl.setOnAction((ActionEvent e) -> { try { // button action for next level
-               
-                Parent tableViewParent = FXMLLoader.load(getClass().getResource("Final_Project_Level2.fxml")); // load up the next FXML file
-                Scene tableViewScene = new Scene(tableViewParent); // sets the fxml as the scene
-                Stage window = (Stage)((Node)event.getSource()).getScene().getWindow(); // makes the window the stage, and the scene
-                window.setScene(tableViewScene); // sets the scene to be the new fxml
-                window.show(); // shows the next fxml file in the window
+
+                Image img = new Image("final_project/winnerButton.jpg"); // pastes the custom image onto the button
+
+                ImageView view = new ImageView(img);  // allows the image to be pasted onto the button
+                view.setFitHeight(300); // sets the height for the image on button
+                view.setPreserveRatio(true); // makes sure the image is the correct resolution / measurements
+
+                Button nextLevel = new Button(); // create a button that allows the player to move onto the next level
+                nextLevel.setLayoutX(1320); // position x for button
+                nextLevel.setLayoutY(300); // position y for button
+                nextLevel.setMinWidth(100); // width of the button
+                nextLevel.setMinHeight(100); // height of the button
+                nextLevel.setGraphic(view); // sets the image that will be pasted onto the button
+                nextLevel.setOnAction((ActionEvent e) -> {
+                    try { // button action for next level
+
+                        Parent tableViewParent = FXMLLoader.load(getClass().getResource("Final_Project_Level2.fxml")); // load up the next FXML file
+
+                        Scene tableViewScene = new Scene(tableViewParent); // sets the fxml as the scene
+
+                        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow(); // makes the window the stage, and the scene
+                        window.setScene(tableViewScene); // sets the scene to be the new fxml
+                        window.setTitle("Kodable Level 2");
+                        window.show(); // shows the next fxml file in the window
                     } catch (IOException ex) { // needed in order to implement this solution
                         Logger.getLogger(Final_ProjectController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-        });
-            anchorPane.getChildren().add(nxLvl); // add the button to the anchorPane that will display when the arrows are correct
-                
-                
+                });
+
+                anchorPane.getChildren().add(nextLevel); // add the button to the anchorPane that will display when the arrows are correct
 
             } else { // if the game is not paused
                 pathTransition.play(); // play the path transition animation to the screen
@@ -467,8 +465,6 @@ public class Final_ProjectController implements Initializable {
 
         ContextMenu contextMenu3 = new ContextMenu(); // adding the context menu
 
-        // adding the items that appear in the context menu, they will represent
-        // directions that the user can choose
         menuItem1 = new MenuItem("Left"); // the first menu item will contain the option for left
         menuItem2 = new MenuItem("Right"); // the second menu item will contain the option for right
         menuItem3 = new MenuItem("Up"); // the third menu item will contain the option for up

@@ -5,22 +5,15 @@
  */
 package final_project;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
@@ -35,7 +28,6 @@ import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -171,6 +163,7 @@ public class Final_Project_Level3Controller implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -189,6 +182,7 @@ public class Final_Project_Level3Controller implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -207,6 +201,7 @@ public class Final_Project_Level3Controller implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -256,6 +251,7 @@ public class Final_Project_Level3Controller implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -274,6 +270,7 @@ public class Final_Project_Level3Controller implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -292,6 +289,7 @@ public class Final_Project_Level3Controller implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -309,6 +307,7 @@ public class Final_Project_Level3Controller implements Initializable {
 
             rectangle.setFill(new ImagePattern(image)); // filling the background with the image as the background
             rectangle.setMouseTransparent(true); // used to allow the user to chose a different direction if they chose the incorrect sequence, otherwise they would not be able to 
+
             anchorPane.getChildren().add(rectangle); // add the image to the anchorPane that will display the arrow the user chose
         });
 
@@ -338,7 +337,7 @@ public class Final_Project_Level3Controller implements Initializable {
         System.out.println("Rectangle 3 is " + Rectangle3); // showing what initial value that was stored in the third rectangle
         System.out.println("Rectangle 4 is " + Rectangle4); // showing what initial value that was stored in the fourth rectangle
 
-        if (Rectangle1 == "Up" && Rectangle2 == "Right" && Rectangle3 == "Down" && Rectangle4 == "Right") { // if the user enterred the correct path for this level
+        if (Rectangle1.equals("Up") && Rectangle2.equals("Right") && Rectangle3.equals("Down") && Rectangle4.equals("Right")) { // if the user enterred the correct path for this level
             Rectangle rectangle = new Rectangle(); // creating a new rectangle to store the background image of the picture of a corrct check mark
             rectangle.setX(800); // setting the rectangle's x postion to be 800
             rectangle.setY(15); // setting the rectangle's y postion to be 15
@@ -368,11 +367,11 @@ public class Final_Project_Level3Controller implements Initializable {
 
                 line1 = new LineTo(0, -300); // move from start to point line1
 
-                line2 = new LineTo(400, -300); // move from start to point line2
+                line2 = new LineTo(415, -300); // move from start to point line2
 
-                line3 = new LineTo(400, -200); // move from start to point line3
+                line3 = new LineTo(415, -200); // move from start to point line3
 
-                line4 = new LineTo(850, -200); // move from start to point line4
+                line4 = new LineTo(835, -200); // move from start to point line4
 
                 path.getElements().addAll(moveTo, line1, line2, line3, line4); // adding all of the elements of the path
 
@@ -392,26 +391,25 @@ public class Final_Project_Level3Controller implements Initializable {
                 rotateTransition.play(); // play the rotate transition animation to the screen 
 
                 isPaused = false; // the game is no longer paused
-                
-                
-            Image img = new Image("final_project/quitButton.jpg"); // pastes the custom image onto the button
-            ImageView view = new ImageView(img);  // allows the image to be pasted onto the button
-            view.setFitHeight(300); // sets the height for the image on button
-            view.setPreserveRatio(true); // makes sure the image is the correct resolution / measurements
-            Button nxLvl = new Button(); // create a button that allows the player to move onto the next level
-            nxLvl.setLayoutX(1320); // position x for button
-            nxLvl.setLayoutY(300); // position y for button
-            nxLvl.setMinWidth(100); // width of the button
-            nxLvl.setMinHeight(100); // height of the button
-            nxLvl.setGraphic(view); // sets the image that will be pasted onto the button
-            nxLvl.setOnAction((ActionEvent e) -> { { 
-                System.exit(0);
-                    
+
+                Image img = new Image("final_project/quitButton.jpg"); // pastes the custom image onto the button
+                ImageView view = new ImageView(img);  // allows the image to be pasted onto the button
+                view.setFitHeight(300); // sets the height for the image on button
+                view.setPreserveRatio(true); // makes sure the image is the correct resolution / measurements
+
+                Button nextLevel = new Button(); // create a button that allows the player to move onto the next level
+                nextLevel.setLayoutX(1320); // position x for button
+                nextLevel.setLayoutY(300); // position y for button
+                nextLevel.setMinWidth(100); // width of the button
+                nextLevel.setMinHeight(100); // height of the button
+                nextLevel.setGraphic(view); // sets the image that will be pasted onto the button
+                nextLevel.setOnAction((ActionEvent e) -> {
+                    {
+                        System.exit(0); // if they press this button, close the app
+
                     }
-        });
-            anchorPane.getChildren().add(nxLvl); // add the button to the anchorPane that will display when the arrows are correct
-                
-                
+                });
+                anchorPane.getChildren().add(nextLevel); // add the button to the anchorPane that will display when the arrows are correct
 
             } else { // if the game is not paused
                 pathTransition.play(); // play the path transition animation to the screen
