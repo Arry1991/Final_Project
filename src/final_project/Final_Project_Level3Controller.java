@@ -40,15 +40,6 @@ import javafx.util.Duration;
  */
 public class Final_Project_Level3Controller implements Initializable {
 
-    // for "locking" the rectangle into position
-    // when the rectangle gets to a desired position, change the background color to blue
-    // or in the empty placeholder, hover or select (highlight and put focus) and then move to the source subwindow and select the direction 
-    // 
-    // for using multiple animations
-    // use animation set, to determine the order for animation
-    // 
-    // use some if statements to verify the correct position before it gets moved?
-    // keep the correct path simple, ~4 units to get to the end 
     @FXML
     private ImageView grassBackgroundImage; // used for the grass in the background
     @FXML
