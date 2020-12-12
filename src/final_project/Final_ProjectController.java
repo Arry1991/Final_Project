@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -223,7 +224,7 @@ public class Final_ProjectController implements Initializable {
      * select one of four directions (left, right, up, and down), by using their
      * mouse.
      *
-     * @param event represents the mouse click from the user
+     * @param event represents the mouse click from the user.
      */
     @FXML
     private void rightClickRectangle2(MouseEvent event) {
@@ -329,25 +330,26 @@ public class Final_ProjectController implements Initializable {
      * entered the correct sequence (left, right, up, and down), by using the
      * users mouse.
      *
-     * @param event this will represent the mouse click from the user
+     * @param event this will represent the mouse click from the user.
+     * @throws IOException an error for writing to the file.
      */
     @FXML
     private void movePlayer(MouseEvent event) throws IOException {
-        Date date =java.util.Calendar.getInstance().getTime();
+        Date date = Calendar.getInstance().getTime(); // gets the current date and time
 
         System.out.println("Rectangle 1 is " + Rectangle1); // showing what initial value that was stored in the first rectangle
         System.out.println("Rectangle 2 is " + Rectangle2); // showing what initial value that was stored in the second rectangle
         System.out.println("Rectangle 3 is " + Rectangle3); // showing what initial value that was stored in the third rectangle
         System.out.println("Rectangle 4 is " + Rectangle4); // showing what initial value that was stored in the fourth rectangle
 
-        
-        FileWriter myWriter = new FileWriter("log.txt",true); // sets the writer to not overwrite the log file if created already
-        PrintWriter printWriter = new PrintWriter (myWriter); // sets printWriter to write to the file set in fileWriter, the log
-        printWriter.print(date); // starts the log line with current date and time
-        printWriter.append(" - Level 1 : " + Rectangle1 + " " + Rectangle2 + " " + Rectangle3 + " " + Rectangle4 + " hit Start");
-        printWriter.println(); // adds the information to the log line, then makes a new line for next log to start
-        printWriter.close(); // closes printWriter.
-        
+        FileWriter fileWriter = new FileWriter("log.txt", true); // sets the writer to not overwrite the log file if created already
+        try (PrintWriter printWriter = new PrintWriter(fileWriter) // sets printWriter to write to the file set in fileWriter, the log, a try catch with resources, meaning it will automatically close the file 
+                ) {
+            printWriter.print(date); // starts the log line with current date and time
+            printWriter.append(" - Level 1 : " + Rectangle1 + " " + Rectangle2 + " " + Rectangle3 + " " + Rectangle4 + " hit Start");
+            printWriter.println(); // adds the information to the log line, then makes a new line for next log to start
+        } 
+
         if (Rectangle1.equals("Down") && Rectangle2.equals("Right") && Rectangle3.equals("Up") && Rectangle4.equals("Right")) { // if the user enterred the correct path for this level
             Rectangle rectangle = new Rectangle(); // creating a new rectangle to store the background image of the picture of a corrct check mark
             rectangle.setX(800); // setting the rectangle's x postion to be 800
@@ -582,9 +584,6 @@ public class Final_ProjectController implements Initializable {
     @FXML
     private void rightClickRectangle4(MouseEvent event) throws IOException {
         System.out.println("Rectangle 4 clicked"); // used for debugging
-        
-    
-        
 
         ContextMenu contextMenu4 = new ContextMenu(); // adding the context menu
 
@@ -694,8 +693,7 @@ public class Final_ProjectController implements Initializable {
         pathTransition.pause(); // pausing the animation that make the circle move across the path
 
         rotateTransition.pause(); // pausing the animation that makes the circle roll across the path 
-        
-       
+
     }
 
 }

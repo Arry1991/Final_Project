@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
@@ -322,25 +323,28 @@ public class Final_Project_Level3Controller implements Initializable {
      * entered the correct sequence (left, right, up, and down), by using the
      * users mouse.
      *
-     * @param event this will represent the mouse click from the user
+     * @param event this will represent the mouse click from the user.
+     * @throws IOException an error for writing to the file.
      */
     @FXML
     private void movePlayer(MouseEvent event) throws IOException {
 
-        Date date =java.util.Calendar.getInstance().getTime(); // gets time for logging
-        
+        Date date = Calendar.getInstance().getTime(); // gets the current date and time for logging
+
         System.out.println("Rectangle 1 is " + Rectangle1); // showing what initial value that was stored in the first rectangle
         System.out.println("Rectangle 2 is " + Rectangle2); // showing what initial value that was stored in the second rectangle
         System.out.println("Rectangle 3 is " + Rectangle3); // showing what initial value that was stored in the third rectangle
         System.out.println("Rectangle 4 is " + Rectangle4); // showing what initial value that was stored in the fourth rectangle
 
-        FileWriter myWriter = new FileWriter("log.txt",true); // logging, reads that if its already made to not overwrite
-        PrintWriter printWriter = new PrintWriter (myWriter); // creates a print writer to write to myWriter file
-        printWriter.print(date); // sets new line as the date
-        printWriter.append(" - Level 3 : " + Rectangle1 + " " + Rectangle2 + " " + Rectangle3 + " " + Rectangle4 + " hit Start");
-        printWriter.println(); // adds the append information, then creates a new line for next log to start
-        printWriter.close(); // closes printWriter
-        
+        FileWriter fileWriter = new FileWriter("log.txt", true); // logging, reads that if its already made to not overwrite a, try catch with resources, meaning it will automatically close the file 
+        try (PrintWriter printWriter = new PrintWriter(fileWriter) // creates a print writer to write to myWriter file
+                ) {
+            printWriter.print(date); // sets new line as the date
+            printWriter.append(" - Level 3 : " + Rectangle1 + " " + Rectangle2 + " " + Rectangle3 + " " + Rectangle4 + " hit Start");
+            printWriter.println(); // adds the append information, then creates a new line for next log to start
+
+        } 
+
         if (Rectangle1.equals("Up") && Rectangle2.equals("Right") && Rectangle3.equals("Down") && Rectangle4.equals("Right")) { // if the user enterred the correct path for this level
             Rectangle rectangle = new Rectangle(); // creating a new rectangle to store the background image of the picture of a corrct check mark
             rectangle.setX(800); // setting the rectangle's x postion to be 800
