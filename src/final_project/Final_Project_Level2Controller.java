@@ -5,8 +5,11 @@
  */
 package final_project;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -330,13 +333,21 @@ public class Final_Project_Level2Controller implements Initializable {
      * @param event this will represent the mouse click from the user
      */
     @FXML
-    private void movePlayer(MouseEvent event) {
+    private void movePlayer(MouseEvent event) throws IOException {
+        Date date =java.util.Calendar.getInstance().getTime();
 
         System.out.println("Rectangle 1 is " + Rectangle1); // showing what initial value that was stored in the first rectangle
         System.out.println("Rectangle 2 is " + Rectangle2); // showing what initial value that was stored in the second rectangle
         System.out.println("Rectangle 3 is " + Rectangle3); // showing what initial value that was stored in the third rectangle
         System.out.println("Rectangle 4 is " + Rectangle4); // showing what initial value that was stored in the fourth rectangle
 
+        FileWriter myWriter = new FileWriter("log.txt",true); // sets the writer to not overwrite the log file if created already
+        PrintWriter printWriter = new PrintWriter (myWriter); // creates a new printWriter to write to the myWriter file (log)
+        printWriter.print(date); // starts with the current date and time for log line
+        printWriter.append(" - Level 2 : " + Rectangle1 + " " + Rectangle2 + " " + Rectangle3 + " " + Rectangle4 + " hit Start");
+        printWriter.println(); // after the append info is entered, it will create a new line for next log
+        printWriter.close(); // closes printWriter
+        
         if (Rectangle1.equals("Right") && Rectangle2.equals("Down") && Rectangle3.equals("Right") && Rectangle4.equals("Up")) { // if the user enterred the correct path for this level
             Rectangle rectangle = new Rectangle(); // creating a new rectangle to store the background image of the picture of a corrct check mark
             rectangle.setX(800); // setting the rectangle's x postion to be 800
